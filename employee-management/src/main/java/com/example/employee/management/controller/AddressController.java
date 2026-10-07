@@ -30,9 +30,9 @@ public class AddressController {
     public Address test_rollback(@RequestBody  Employee employee){
 
         Address address = new Address();
-        address.setState("Chhattisgarh");
-        address.setCity("Raipur");
-        address.setPostalCode( "490023");
+        address.setState("Maharshtra");
+        address.setCity("Pune");
+        address.setPostalCode( "490012");
 
         return addressService.registerEmployeeWithAddress(employee,address);
 

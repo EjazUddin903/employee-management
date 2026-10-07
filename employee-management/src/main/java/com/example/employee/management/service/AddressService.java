@@ -7,6 +7,7 @@ import com.example.employee.management.repository.AddressRepository;
 import com.example.employee.management.repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 @Service
 public class AddressService {
@@ -42,6 +43,10 @@ public class AddressService {
         } catch (RuntimeException ex) {
 
             System.out.println("Exception get caught");
+
+            TransactionAspectSupport
+                    .currentTransactionStatus()
+                    .setRollbackOnly();
 
 
         }
