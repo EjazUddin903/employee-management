@@ -1,5 +1,6 @@
 package com.example.employee.management.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,9 +21,15 @@ public class Employee {
     @Positive
     private int salary;
 
+    @OneToOne(mappedBy = "employee")
+    @JsonIgnore
+    private Address address;
+
     public Employee(){
 
     }
+
+
 
     public long getId(){
         return id;
@@ -67,5 +74,12 @@ public class Employee {
         this.id= id;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
 

@@ -3,8 +3,10 @@ package com.example.employee.management.controller;
 
 import com.example.employee.management.dto.EmployeeRequestDTO;
 import com.example.employee.management.dto.EmployeeResponseDTO;
+import com.example.employee.management.entity.Address;
 import com.example.employee.management.entity.Employee;
 import com.example.employee.management.service.EmployeeService;
+import jakarta.validation.Path;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,6 +71,16 @@ public class EmployeeController {
         EmployeeResponseDTO updatedEmployee = employeeservice.updateEmployee(employee,id);
         return new ResponseEntity<>(updatedEmployee,HttpStatus.OK);
 
+
+    }
+
+    @GetMapping("employee/address/{id}")
+    public Address getEmpAddress(@PathVariable Long id){
+
+         Address address = employeeservice.getEmployeeAddess(id);
+
+//         return  new ResponseEntity<>(address,HttpStatus.OK);
+        return address;
 
     }
 

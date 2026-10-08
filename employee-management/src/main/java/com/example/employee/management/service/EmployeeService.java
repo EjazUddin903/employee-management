@@ -2,6 +2,7 @@ package com.example.employee.management.service;
 
 import com.example.employee.management.dto.EmployeeRequestDTO;
 import com.example.employee.management.dto.EmployeeResponseDTO;
+import com.example.employee.management.entity.Address;
 import com.example.employee.management.entity.Employee;
 import com.example.employee.management.exception.DuplicateEmailException;
 import com.example.employee.management.exception.EmployeeNotFoundException;
@@ -126,6 +127,14 @@ public class EmployeeService {
         response.setSalary(emp.getSalary());
 
         return   response;
+
+    }
+
+    public Address  getEmployeeAddess(Long id){
+        Employee employee = repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException("employee with this id is not found: " + id));
+
+        return  employee.getAddress();
+
 
     }
 

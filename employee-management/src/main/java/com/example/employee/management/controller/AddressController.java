@@ -27,12 +27,12 @@ public class AddressController {
     }
 
     @PostMapping("/test-rollback")
-    public Address test_rollback(@RequestBody  Employee employee){
+    public Address test_rollback(@RequestBody  Employee employee) throws Exception {
 
         Address address = new Address();
-        address.setState("Maharshtra");
-        address.setCity("Pune");
-        address.setPostalCode( "490012");
+        address.setState("TEST_STATE");
+        address.setCity("CheckedExceptionCity");
+        address.setPostalCode("999999");
 
         return addressService.registerEmployeeWithAddress(employee,address);
 
